@@ -2,6 +2,8 @@
 
 ## Installation
 
+- Install virtualenvwrapper
+- Execute `mkvirtualenv <env>`  // Replace <env> with name of environment
 - Execute `pip install -r requirements.txt`
 - Execute `python app/movies.py`
 

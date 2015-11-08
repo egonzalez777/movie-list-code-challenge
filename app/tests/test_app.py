@@ -33,6 +33,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.post')
     def test_movie_add_success(self, movie_add):
+
         movie_add.return_value = \
             json.loads('{"status": 201, "message": \
                 "Movie entry has been created", \
@@ -48,6 +49,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.put')
     def test_movie_update_success(self, movie_update):
+
         movie_update.return_value = json.loads('{"status": 200, "message": \
             "Entry has been successfully updated", "data": []}')
 
@@ -59,6 +61,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.delete')
     def test_movie_delete_success(self, movie_delete):
+
         movie_delete.return_value =\
             json.loads('{"status": 204, \
                 "message": "Item has been successfully removed",\
@@ -72,6 +75,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.get')
     def test_movie_list_404(self, movie_list):
+
         movie_list.return_value = json.loads(
             '{"status": 404, "data": [], "message": "Page not found"}')
 
@@ -81,6 +85,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.delete')
     def test_movie_list_405_delete(self, movie_list):
+
         movie_list.return_value = json.loads(
             '{"status": 405, "data": [], "message": "Method not allowed"}')
 
@@ -92,6 +97,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.put')
     def test_movie_list_405_put(self, movie_list):
+
         movie_list.return_value = json.loads(
             '{"status": 500, "data": [], "message": "Internal server error"}')
 
@@ -102,6 +108,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.post')
     def test_movie_list_405_post(self, movie_list):
+
         movie_list.return_value = json.loads(
             '{"status": 405, "data": [], "message": "Method not allowed"}')
 
@@ -112,6 +119,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.post')
     def test_movie_add_400(self, movie_add):
+
         movie_add.return_value = json.loads(
             '{"status": 400, "data": [], "message": "Bad request"}')
 
@@ -122,6 +130,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.put')
     def test_movie_add_405(self, movie_add):
+
         movie_add.return_value = json.loads(
             '{"status": 405, "data": [], "message": "Method not allowed"}')
 
@@ -132,6 +141,7 @@ class TestMoviesRestAPI(unittest.TestCase):
 
     @patch('requests.get')
     def test_movie_add_405_get(self, movie_add):
+
         movie_add.return_value = json.loads(
             '{"status": 405, "data": [], "message": "Method not allowed"}')
 

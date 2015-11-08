@@ -22,6 +22,7 @@ from connection import (
 ''' For simplicity we are just using pymongo, however, if we wanted an ORM
 system we would use something like MongoEngine, Ming, MongoAlchemy, etc...'''
 movies = db.movies
+# List of items that should be added as a MongoDB document.
 valid_columns = ['title', 'release_date', 'production_company']
 
 
@@ -35,6 +36,7 @@ def validate_payload(payload):
 
     validated_item = {}
     if payload:
+        # Only validate if key is inside list of valid columns
         validated_item = \
             {key: value for (key, value) in payload.items()
                 if key in valid_columns}
@@ -54,8 +56,8 @@ def movie_list():
     data = None
     movie_list = [movie for movie in movies.find({}, {'_id': False})]
     if movie_list:
-        # This is only required if you wish to deal with JSON
-        # data, and not having to parse the json.
+        """ This is only required if you wish to deal with JSON
+            data, and not having to parse the json response in the frontend."""
         data = literal_eval(str(movie_list))
 
     return {'status': 200, 'data': data}
@@ -162,4 +164,4 @@ def error500(error):
 
 
 if __name__ == '__main__':
-    run(server='paste', host="localhost", port=8000, debug=True, reloader=True)
+    run(server='paste', host="localhost", port=8000)
