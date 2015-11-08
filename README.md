@@ -2,10 +2,10 @@
 
 ## Installation
 
-- Run pip install -r requirements.txt
-- execute `python app/movies.py`
+- Execute `pip install -r requirements.txt`
+- Execute `python app/movies.py`
 
 ## Running tests
 
-- cd into app directory
-- execute `nosetests -vs tests/test_app.py`
+- Execute `cd app`
+- Execute `nosetests -vs tests/test_app.py`
