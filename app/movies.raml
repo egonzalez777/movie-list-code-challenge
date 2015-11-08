@@ -1,0 +1,99 @@
+#%RAML 0.8
+  ---
+  title: Rackspace-Movie-Catalog API
+  baseUri: http://api.rackspace.com/{version}
+  version: v1
+
+/movies:
+    post:
+        description: Add new movie to catalog
+        responses:
+            201:
+                body:
+                    application/json:
+                    example:  |
+                        {
+                            "status": 201, 
+                            "message": "Movie entry has been created", 
+                            "data": "563ea6e617dd970849ccecaf"
+                        }
+            400:
+                body:
+                    application/json
+                    example:  |
+                        {
+                            "status": 400, 
+                            "message": "Bad request", 
+                            "data": []
+                        }
+    /list:
+        get:
+            description: Get all movies in the catalog
+            responses:
+                200:
+                    body:
+                        application/json:
+                        example: |
+                            {
+                                "status": 200,
+                                "data": [
+                                    {
+                                        "title": "Some Title 22",
+                                        "release_date": "2014-08-23 10:18:32.926",
+                                        "production_company": "Rigo Biz"
+                                    }
+                                ]
+                            }
+   
+    /{movie_title}:
+        put:
+            description: Update an existing movie entry
+            responses:
+                200:
+                    body:
+                        application/json:
+                        example:  |
+                            {
+                                "status": 200, 
+                                "message": "Entry has been successfully updated", 
+                                "data": []
+                            }
+                400:
+                    body:
+                        application/json:
+                        example:  |
+                            {
+                                "status": 400, 
+                                "message": "Bad request", 
+                                "data": []
+                            }
+                500:
+                    body:
+                        application/json
+                        example:  |
+                            {
+                                "status": 500,
+                                "message": "Internal server error",
+                                "data": []
+                            }
+        delete:
+            description: Delete an existing movie entry
+            responses:
+                204:
+                    body:
+                        application/json
+                        example:  |
+                            {
+                                "status": 204,
+                                "message": "Item has been successfully removed",
+                                "data": []
+                            }
+                412:
+                    body:
+                        application/json
+                        example:  |
+                            {
+                                "status": 412, 
+                                "message": "Precondition failed", 
+                                "data": []
+                            }
